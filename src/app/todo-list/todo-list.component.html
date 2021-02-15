@@ -1,0 +1,23 @@
+<p>todo-list works!</p>
+
+<!-- {{ todos | json }} -->
+
+<!-- <img src="{{ image }}" alt="Mon image"> Pas bien. -->
+<!-- <img src="https://fakeimg.pl/300/" alt="Mon image"> -->
+<img [src]="image" alt="Mon image">
+
+<ul>
+  <li
+    *ngFor="let t of todos; index as i, first as fisrt, last as last, even as even, odd as odd"
+    [ngClass]="{finished: t.finished}"
+  >
+    {{ i + 1 }}&nbsp;-&nbsp;
+
+    <!-- <span *ngIf="t.finished; else notFinished">OK</span>
+    <ng-template #notFinished>
+      <span>KO</span>
+    </ng-template> -->
+
+    {{ t.label }}
+  </li>
+</ul>

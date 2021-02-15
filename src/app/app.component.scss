@@ -1,0 +1,22 @@
+article {
+  display: flex;
+  flex-flow: row wrap;
+
+  &>* {
+    width: 40%;
+    flex-grow: 1;
+  }
+
+  app-demo { background-color: silver; }
+}
+
+// article>* {}
+// article p {}
+// article p:first-of-type() {}
+// // ===============
+// article {
+//   &>* {}
+//   p {
+//     &:first-of-type() {}
+//   }
+// }
