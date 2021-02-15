@@ -1,6 +1,16 @@
 Projet de démonstration
 =======================
 
+Installation du projet de démonstration
+---------------------------------------
+
+```bash
+git clone https://github.com/jponcy/ng_m2i_2021
+cd ng_m2i_2021
+npm install
+npm start
+```
+
 Liens intéressants
 ------------------
 
