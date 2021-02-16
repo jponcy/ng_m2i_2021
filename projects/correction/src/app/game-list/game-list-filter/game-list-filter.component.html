@@ -1,7 +1,9 @@
-<form class="row">
+<form class="row" (submit)="$event.preventDefault(); onSubmit()">
+<!-- <form class="row" (ngSubmit)="onSubmit()"> -->
+<!-- <form class="row" (ngSubmit)="onSubmit(form)" #form> -->
   <div class="form-group col-md-4">
     <label for="name">Nom du jeu</label>
-    <input type="text" class="form-control" id="name">
+    <input type="text" class="form-control" id="name" (change)="onChange('name', $event.target.value)">
   </div>
 
   <!-- <mat-form-field formControlName="name">
@@ -11,7 +13,7 @@
 
   <div class="form-group col-md">
     <label for="type">Type de jeu</label>
-    <select name="" id="type" class="form-control">
+    <select name="type" id="type" class="form-control"  (change)="onChange('type', $event.target.value)">
       <option value="">Aucun</option>
       <option *ngFor="let type of types">{{ type }}</option>
     </select>
@@ -19,7 +21,7 @@
 
   <div class="form-group col-md">
     <label for="editor">Editeur du jeu</label>
-    <input type="text" class="form-control" id="editor">
+    <input type="text" class="form-control" id="editor" (change)="onChange('editor', $event.target.value)">
   </div>
 
   <div class="actions col-sm-12 d-flex justify-content-center">
