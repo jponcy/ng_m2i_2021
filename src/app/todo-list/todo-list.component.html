@@ -6,18 +6,10 @@
 <!-- <img src="https://fakeimg.pl/300/" alt="Mon image"> -->
 <img [src]="image" alt="Mon image">
 
-<ul>
-  <li
-    *ngFor="let t of todos; index as i, first as fisrt, last as last, even as even, odd as odd"
-    [ngClass]="{finished: t.finished}"
-  >
-    {{ i + 1 }}&nbsp;-&nbsp;
+<p>
+  {{ todos | json }}
+</p>
 
-    <!-- <span *ngIf="t.finished; else notFinished">OK</span>
-    <ng-template #notFinished>
-      <span>KO</span>
-    </ng-template> -->
-
-    {{ t.label }}
-  </li>
-</ul>
+<ol>
+  <app-todo-list-item [todo]="t" (childClick)="onChildClick($event, t)" *ngFor="let t of todos"></app-todo-list-item>
+</ol>

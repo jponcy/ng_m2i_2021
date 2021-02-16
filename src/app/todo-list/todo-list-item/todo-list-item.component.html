@@ -1,0 +1,6 @@
+<li
+  [ngClass]="{finished: todo.finished}"
+  (click)="onFinished($event, todo)"
+>
+  {{ todo.label }}
+</li>

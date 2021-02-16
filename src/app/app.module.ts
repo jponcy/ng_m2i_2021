@@ -6,12 +6,14 @@ import { DemoComponent } from './demo.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TodoListItemComponent } from './todo-list/todo-list-item/todo-list-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DemoComponent,
-    TodoListComponent
+    TodoListComponent,
+    TodoListItemComponent
   ],
   imports: [
     BrowserModule,
