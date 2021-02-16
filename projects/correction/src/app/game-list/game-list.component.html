@@ -27,9 +27,7 @@
       </main>
       <footer class="actions">
         <app-game-list-actions
-          (follow)="onFollow(g)"
-          (share)="onShare(g)"
-          (buy)="onBuy(g)"
+          (action)="onAction($event, g)"
         ></app-game-list-actions>
       </footer>
     </article>
