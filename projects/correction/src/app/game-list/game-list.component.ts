@@ -32,6 +32,7 @@ const gen = (name: string, note: number, coverImage: string, type: string = null
 export class GameListComponent implements AfterViewInit {
 
   // width = 300;
+  private initialWidth: number;
   width: number;
 
   readonly games = [
@@ -62,13 +63,21 @@ export class GameListComponent implements AfterViewInit {
   ];
 
   ngAfterViewInit(): void {
-    setTimeout(() => this.width = (document.querySelector('.card') as any).offsetWidth, 0);
+    setTimeout(() => {
+      const width = (document.querySelector('.card') as any).offsetWidth;
+      this.width = width;
+      this.initialWidth = width;
+    }, 0);
   }
 
   // @ViewChild('myCards')
   // private set cards(cards: ElementRef) {
   //   setTimeout(() => this.width = cards.nativeElement.children[0].offsetWidth, 0);
   // }
+
+  onResetSize(): void {
+    this.width = this.initialWidth;
+  }
 
   onAction(action: ActionType, game: Game): void {
     window.alert(`User '${action}' ${game.name}`);
