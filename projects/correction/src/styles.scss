@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~bootstrap/scss/bootstrap';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.card-list main { display: flex; }
+
+// Real card.
+.card {
+  $pad: 15;
+  @debug 'Les cards auront un padding de ' + $pad;
+  padding: #{$pad}px;
+  width: 100%;
+
+  // .card header, .card footer, .card main { padding: 15px; }
+  // Pas la meilleur solution CSS, mais permet de montrer un certain nombre d'elements SASS.
+  img {
+    position: relative;
+    left: -#{$pad}px;
+    width: 100%;
+    width: calc(100% + #{$pad * 2}px);
+  }
+
+  header {
+    div {
+      display: flex;
+      align-items: center;
+      h1 { margin-bottom: 0; }
+    }
+
+    small { color: silver; }
+  }
+
+  main {
+    text-align: justify;
+    word-wrap: break-word;
+  }
+}
+
+.spacer { flex-grow: 1; }

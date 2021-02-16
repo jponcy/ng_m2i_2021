@@ -1,0 +1,36 @@
+<app-game-list-filter></app-game-list-filter>
+
+<hr>
+
+<section class="card-list">
+  <header>
+    <h1>Our games</h1>
+  </header>
+<!-- <p>
+  {{games[0]|json}}
+</p> -->
+  <main>
+    <article *ngFor="let g of games" class="card">
+      <header>
+        <div>
+          <h1>{{ g.name }}</h1>
+          <div class="spacer"></div>
+          <span>{{ g.note }}/10</span>
+        </div>
+        <div>
+          <small>{{ g.type }}</small>
+        </div>
+      </header>
+      <img [src]="g.coverImage" [alt]="'Cover image of ' + g.name">
+      <main>
+        <p [innerHTML]="makeDesc(g)">
+        </p>
+      </main>
+      <footer>
+        <button>follow</button>
+        <button>share</button>
+        <button>buy</button>
+      </footer>
+    </article>
+  </main>
+</section>

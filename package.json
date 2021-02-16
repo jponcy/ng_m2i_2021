@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:correction": "ng serve --port 4205 --project correction",
     "build": "ng build --prod --aot --build-optimizer",
     "test": "ng test",
     "lint": "ng lint",

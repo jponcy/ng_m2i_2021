@@ -1,0 +1,29 @@
+<form class="row">
+  <div class="form-group col-md-4">
+    <label for="name">Nom du jeu</label>
+    <input type="text" class="form-control" id="name">
+  </div>
+
+  <!-- <mat-form-field formControlName="name">
+    <mat-label translate>GAME.LIST.FIELDS.NAME</mat-label>
+    <input matInput>
+  </mat-form-field> -->
+
+  <div class="form-group col-md">
+    <label for="type">Type de jeu</label>
+    <select name="" id="type" class="form-control">
+      <option value="">Aucun</option>
+      <option *ngFor="let type of types">{{ type }}</option>
+    </select>
+  </div>
+
+  <div class="form-group col-md">
+    <label for="editor">Editeur du jeu</label>
+    <input type="text" class="form-control" id="editor">
+  </div>
+
+  <div class="actions col-sm-12 d-flex justify-content-center">
+    <input type="submit" value="Filtrer" class="btn btn-primary">
+    <input type="reset" value="RAZ" class="btn btn-danger">
+  </div>
+</form>
