@@ -6,10 +6,9 @@
   <header>
     <h1>Our games</h1>
   </header>
-<!-- <p>
-  {{games[0]|json}}
-</p> -->
+
   <main>
+    <!-- Draw card. -->
     <article *ngFor="let g of games" class="card">
       <header>
         <div>
@@ -26,10 +25,10 @@
         <p [innerHTML]="makeDesc(g)">
         </p>
       </main>
-      <footer>
+      <footer class="actions">
         <button>follow</button>
         <button>share</button>
-        <button>buy</button>
+        <button class="primary">buy</button>
       </footer>
     </article>
   </main>
