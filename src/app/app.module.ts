@@ -13,7 +13,7 @@ import { TodoListItemComponent } from './todo-list/todo-list-item/todo-list-item
     AppComponent,
     DemoComponent,
     TodoListComponent,
-    TodoListItemComponent
+    TodoListItemComponent,
   ],
   imports: [
     BrowserModule,

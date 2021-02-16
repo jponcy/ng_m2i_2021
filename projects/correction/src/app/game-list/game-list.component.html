@@ -26,9 +26,11 @@
         </p>
       </main>
       <footer class="actions">
-        <button (click)="onFollow(g)">follow</button>
-        <button (click)="onShare(g)">share</button>
-        <button (click)="onBuy(g)" class="primary">buy</button>
+        <app-game-list-actions
+          (follow)="onFollow(g)"
+          (share)="onShare(g)"
+          (buy)="onBuy(g)"
+        ></app-game-list-actions>
       </footer>
     </article>
   </main>
