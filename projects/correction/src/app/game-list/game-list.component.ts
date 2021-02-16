@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ActionType } from './models';
 
 interface Game {
@@ -60,6 +60,9 @@ export class GameListComponent {
   onAction(action: ActionType, game: Game): void {
     window.alert(`User '${action}' ${game.name}`);
   }
+
+  // @HostListener('mouseenter')
+  // onMouseEnter() {}
 
   makeDesc(game: Game): string {
     let result = game.description;
