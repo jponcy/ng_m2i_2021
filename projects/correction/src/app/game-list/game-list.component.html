@@ -7,9 +7,14 @@
     <h1>Our games</h1>
   </header>
 
-  <main>
+  <div class="actions">
+    <button (click)="width = width - 10">-</button>
+    <button (click)="width = width + 10">+</button>
+  </div>
+
+  <main #myCards>
     <!-- Draw card. -->
-    <article *ngFor="let g of games" class="card">
+    <article *ngFor="let g of games" class="card" [ngStyle]="{width: width + 'px'}">
       <header>
         <div>
           <h1>{{ g.name }}</h1>
