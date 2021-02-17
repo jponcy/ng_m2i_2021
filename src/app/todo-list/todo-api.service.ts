@@ -1,22 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
-import { delay } from 'rxjs/operators';
-import { Todo } from './models';
+import { Observable } from 'rxjs';
 
-const todos: Todo[] = [
-  { label: 'Faire la vaiselle', finished: true },
-  { label: 'Apprendre les bases d\'Angular', finished: false },
-  { label: 'Apprendre ngIf', finished: false },
-  { label: 'Apprendre ngFor', finished: false },
-  { label: 'Faire le TP', finished: false },
-];
+import { Todo } from './models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoApiService {
+
+  constructor(private readonly http: HttpClient) {}
+
   getAll(): Observable<Todo[]> {
-    // TODO: Implement real version!
-    return of(todos).pipe(delay(1_500));
+    return this.http.get<Todo[]>('http://localhost:3000/todos');
   }
 }

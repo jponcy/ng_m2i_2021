@@ -1,12 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoListItemComponent } from './todo-list/todo-list-item/todo-list-item.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TodoListItemComponent } from './todo-list/todo-list-item/todo-list-item
   imports: [
     BrowserModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
