@@ -1,7 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button {
+  @extend .btn, .btn-secondary;
+
+  &.primary { @extend .btn-primary; }
+  &.danger,
+  &.alert   { @extend .btn-danger; }
+  // &:not(.primary) { @extend .btn, .btn-secondary; }
+}
+
+.actions button { text-transform: uppercase; }
+
+@each $type in (submit, reset, button) {
+  input[type=#{$type}] { @extend button; }
+}
+
+.card-list main {
+  @media screen and (min-width: 600px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  // @extend .row;
+}
+
+// Real card.
+.card {
+  $pad: 15;
+  @debug 'Les cards auront un padding de ' + $pad;
+  padding: #{$pad}px;
+  width: 100%;
+  margin: 5px;
+
+  &:hover { border: 1px solid black; }
+
+  // @extend .col-sm-6, .col-md-4, .col-lg-3;
+
+  @media screen and (min-width: 600px) and (max-width: 1599px) {
+    width: 45%;
+    flex-grow: 1;
+  }
+
+  @media screen and (min-width: 1600px) { width: 300px; }
+
+  // .card header, .card footer, .card main { padding: 15px; }
+  // Pas la meilleur solution CSS, mais permet de montrer un certain nombre d'elements SASS.
+  img {
+    position: relative;
+    left: -#{$pad}px;
+    width: 100%;
+    width: calc(100% + #{$pad * 2}px);
+  }
+
+  header {
+    div {
+      display: flex;
+      align-items: center;
+      h1 { margin-bottom: 0; }
+    }
+
+    small { color: silver; }
+  }
+
+  main {
+    text-align: justify;
+    word-wrap: break-word;
+  }
+}
+
+.spacer { flex-grow: 1; }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

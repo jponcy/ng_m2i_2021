@@ -1,26 +1,26 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgModule } from '@angular/core';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DemoComponent } from './demo.component';
-import { TodoListItemComponent } from './todo-list/todo-list-item/todo-list-item.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
+import { GameListComponent } from './game-list/game-list.component';
+import { GameListFilterComponent } from './game-list/game-list-filter/game-list-filter.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GameListActionsComponent } from './game-list/game-list-actions.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DemoComponent,
-    TodoListComponent,
-    TodoListItemComponent,
+    GameListComponent,
+    GameListFilterComponent,
+    GameListActionsComponent
   ],
   imports: [
     BrowserModule,
-    NgbModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
