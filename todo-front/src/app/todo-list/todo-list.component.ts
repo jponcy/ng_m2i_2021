@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { of, Subscription } from 'rxjs';
-import { map, reduce, tap } from 'rxjs/operators';
+import { of, Subject, Subscription } from 'rxjs';
+import { map, reduce, takeUntil, tap } from 'rxjs/operators';
 
 import { Todo } from './models';
 import { TodoApiService } from './todo-api.service';
@@ -26,7 +26,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   printingFinished = true;
 
-  private subcription: Subscription;
+  /** Used to free observables. */
+  protected subscriptionHandler$ = new Subject();
 
   // Injection sans utilise de property
   // private api: TodoApiService;
@@ -37,13 +38,14 @@ export class TodoListComponent implements OnInit, OnDestroy {
   constructor(private readonly api: TodoApiService) {}
 
   ngOnInit(): void {
-    this.subcription = this.api.getAll().subscribe(todos => this.todos = todos);
+    this.api.getAll()
+        .pipe(takeUntil(this.subscriptionHandler$))
+        .subscribe(todos => this.todos = todos);
   }
 
   ngOnDestroy(): void {
-    if (this.subcription) {
-      this.subcription.unsubscribe();
-    }
+    this.subscriptionHandler$.next();
+    this.subscriptionHandler$.complete();
   }
 
   onChildClick(newState: boolean, todo: Todo): void {
