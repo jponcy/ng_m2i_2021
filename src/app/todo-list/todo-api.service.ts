@@ -1,4 +1,6 @@
-import { Observable, Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, of, Subject } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { Todo } from './models';
 
 const todos: Todo[] = [
@@ -9,21 +11,12 @@ const todos: Todo[] = [
   { label: 'Faire le TP', finished: false },
 ];
 
-
+@Injectable({
+  providedIn: 'root'
+})
 export class TodoApiService {
-  private subject = new Subject<Todo[]>();
-  private counter = 0;
-  observable: Observable<Todo[]> = this.subject;
-
-  constructor() {
-    setInterval(this.generateSubject, 2_500);
-  }
-
-  private readonly generateSubject = () => {
-    if (this.counter < todos.length) {
-      this.counter++;
-    }
-
-    this.subject.next(todos.slice(0, this.counter));
+  getAll(): Observable<Todo[]> {
+    // TODO: Implement real version!
+    return of(todos).pipe(delay(1_500));
   }
 }

@@ -5,6 +5,14 @@ import { map, reduce, tap } from 'rxjs/operators';
 import { Todo } from './models';
 import { TodoApiService } from './todo-api.service';
 
+class Toto {
+  constructor(private lastname: string, private firstname: string) {}
+
+  hello() {
+    console.log(`Bonjour ${this.firstname} ${this.lastname}`);
+  }
+}
+
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -20,27 +28,16 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   private subcription: Subscription;
 
+  // Injection sans utilise de property
+  // private api: TodoApiService;
+  // constructor(api: TodoApiService) {
+  //   this.api = api;
+  // }
+
+  constructor(private readonly api: TodoApiService) {}
+
   ngOnInit(): void {
-    const api = new TodoApiService();
-
-    this.subcription = api.observable.subscribe(todos => this.todos = todos);
-
-    of(1, 2, 4, 3)
-        .pipe(
-          tap(console.log),
-          map(v => v ** 2),
-          tap(v => console.log(v)),
-          reduce((acc, e) => acc + e),
-          map(v => `Computed: ${v}`),
-          tap(console.log)
-        )
-        .subscribe(() => {});
-
-    of({ lastname: 'Dupont', firstname: 'Jean', id: 52 })
-        .pipe(
-          map(u => ({ name: u.firstname.toLowerCase() + ' ' + u.lastname.toUpperCase(), id: u.id }))
-        )
-        .subscribe(console.log);
+    this.subcription = this.api.getAll().subscribe(todos => this.todos = todos);
   }
 
   ngOnDestroy(): void {
