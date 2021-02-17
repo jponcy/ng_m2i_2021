@@ -6,10 +6,36 @@
 <!-- <img src="https://fakeimg.pl/300/" alt="Mon image"> -->
 <img [src]="image" alt="Mon image">
 
-<p>
-  {{ todos | json }}
-</p>
+<ng-template #loading>
+  <p class="text text-primary">
+    Chargement...
+  </p>
+</ng-template>
 
-<ol>
-  <app-todo-list-item [todo]="t" (childClick)="onChildClick($event, t)" *ngFor="let t of todos"></app-todo-list-item>
+<ol *ngIf="todos; else loading">
+  <ng-container *ngFor="let t of todos">
+    <app-todo-list-item *ngIf="printingFinished || !t.finished" [todo]="t" (childClick)="onChildClick($event, t)" ></app-todo-list-item>
+  </ng-container>
 </ol>
+
+<input type="checkbox" (click)="printingFinished = !printingFinished" id="finished">
+<label for="finished">
+  Ne pas afficher les tâches finies
+</label>
+<!--
+<table>
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Fini ?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let todo of todos">
+      <tr *ngIf="printingFinished || todo.finished">
+        <td>{{ todo.label }}</td>
+        <td>{{ todo.finished ? 'Oui' : 'Non' }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table> -->
