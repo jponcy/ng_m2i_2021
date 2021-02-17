@@ -3,4 +3,7 @@
   (click)="onFinished($event, todo)"
 >
   {{ todo.label }}
+  <small *ngIf="todo.tags?.length" class="tags">
+    <span *ngFor="let tag of todo.tags" [ngStyle]="{color: tag.color}">{{ tag.name }}</span>
+  </small>
 </li>
