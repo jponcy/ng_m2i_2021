@@ -7,6 +7,7 @@ import { GameListComponent } from './game-list/game-list.component';
 import { GameListFilterComponent } from './game-list/game-list-filter/game-list-filter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GameListActionsComponent } from './game-list/game-list-actions.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { GameListActionsComponent } from './game-list/game-list-actions.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
