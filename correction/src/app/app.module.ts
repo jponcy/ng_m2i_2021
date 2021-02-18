@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { LayoutModule } from './layout/layout.module';
 import { GameDetailsComponent } from './game-details/game-details.component';
 import { GameFormComponent } from './game-form/game-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { GameFormComponent } from './game-form/game-form.component';
     NgbModule,
     HttpClientModule,
     SharedModule,
-    LayoutModule
+    LayoutModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

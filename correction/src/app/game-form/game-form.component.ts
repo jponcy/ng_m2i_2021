@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, mergeMap, takeUntil } from 'rxjs/operators';
@@ -16,9 +17,37 @@ export class GameFormComponent implements OnInit {
   /** Used to free observables. */
   protected subscriptionHandler$ = new Subject();
 
-  constructor(private readonly api: GameApiService, private router: Router, private readonly route: ActivatedRoute) { }
-
   private game: Game;
+
+  /*
+   * {} => FormGroup
+   * [] => FormArray
+   * '' => FormControl
+   */
+
+  // form = new FormGroup({
+  //   name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+  //   // ...
+  //   // company: new FormGroup({
+
+  //   // })
+  // });
+
+  form = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    wtf: [[]],
+    disabled: { disabled: true, state: 0 },
+    // ...
+    company: this.fb.group({
+      // ...
+    })
+  });
+
+  constructor(
+      private readonly api: GameApiService,
+      private readonly fb: FormBuilder,
+      private router: Router,
+      private readonly route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params
@@ -29,6 +58,22 @@ export class GameFormComponent implements OnInit {
         )
         .subscribe(game => this.game = game);
     // this.router.navigate(['..', 'games'], { relativeTo: this.route });
+
+    this.form.controls.company.disable();
+    const val = this.form.value; // company ne sera pas present.
+    // this.form.controls.name.value;
+    // this.form.get('name').value;
+    // this.form.controls.name.valid;
+    // this.form.valid;
+    // this.form.controls.company.valid;
+  }
+
+  onSubmit() {
+    this.form.markAllAsTouched();
+
+    if (this.form.valid) {
+      // process
+    }
   }
 
   get title(): string {
