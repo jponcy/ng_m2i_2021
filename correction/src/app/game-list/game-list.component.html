@@ -20,10 +20,10 @@
         <div>
           <h1>{{ g.name }}</h1>
           <div class="spacer"></div>
-          <span>{{ g.note }}/10</span>
+          <span *ngIf="g.note">{{ g.note }}/10</span>
         </div>
         <div>
-          <small>{{ g.type }}</small>
+          <small>{{ categories(g) }}</small>
         </div>
       </header>
       <img [src]="g.coverImage" [alt]="'Cover image of ' + g.name">

@@ -1,10 +1,11 @@
-import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Tag, TagDTO } from './models';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Cacheable } from 'ts-cacheable';
+
+import { environment } from '../../../environments/environment';
+import { Tag, TagDTO } from '../models';
 
 const URL = environment.apiUrl + '/tags';
 

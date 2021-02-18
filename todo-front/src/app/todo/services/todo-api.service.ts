@@ -1,11 +1,11 @@
-import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, zip } from 'rxjs';
-
-import { Todo, TodoDto } from './models';
-import { TagsApiService } from './tags-api.service';
 import { map } from 'rxjs/operators';
+
+import { Todo, TodoDto } from '../models';
+import { environment } from './../../../environments/environment';
+import { TagsApiService } from './tags-api.service';
 
 const URL = `${environment.apiUrl}/todos`;
 
@@ -19,10 +19,29 @@ export class TodoApiService {
   getAll(): Observable<Todo[]> {
     return zip(this.http.get<TodoDto[]>(URL), this.tagApi.getAll())
         .pipe(
-          map(([todos, tags]) => todos.map(todo => ({
+          map(([todos, tags]) => todos.map(({finished_at: finishedAt, ...todo}) => ({
             ...todo,
+            finished: !!finishedAt, // finishedAt !== null,
             tags: tags.filter(t => todo.tags.includes(t.id))
           })))
         );
   }
 }
+
+// console.log(+!!(3 + 2) * 4 & 3)
+// console.log(+!!5 * 4 & 3)
+// console.log(+(true) * 4 & 3)
+// console.log(1 * 4 & 3)
+// console.log(4 & 3)
+
+// 0001
+// 0010
+// 0011
+// 0100
+// 0101
+// 0110
+// 0111
+
+// 4 => 100
+// 3 => 011
+//   => 000

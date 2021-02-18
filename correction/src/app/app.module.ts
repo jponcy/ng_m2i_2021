@@ -1,13 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GameListComponent } from './game-list/game-list.component';
-import { GameListFilterComponent } from './game-list/game-list-filter/game-list-filter.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GameListActionsComponent } from './game-list/game-list-actions.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GameListFilterComponent } from './game-list/game-list-filter/game-list-filter.component';
+import { GameListComponent } from './game-list/game-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

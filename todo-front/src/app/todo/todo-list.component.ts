@@ -1,26 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { of, Subject, Subscription } from 'rxjs';
-import { map, reduce, takeUntil, tap } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { Todo } from './models';
-import { TodoApiService } from './todo-api.service';
-
-class Toto {
-  constructor(private lastname: string, private firstname: string) {}
-
-  hello() {
-    console.log(`Bonjour ${this.firstname} ${this.lastname}`);
-  }
-}
+import { TodoApiService } from './services';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
+  styles: []
 })
 export class TodoListComponent implements OnInit, OnDestroy {
-
-  image = 'https://fakeimg.pl/50/';
 
   todos: Todo[];
 
@@ -28,12 +18,6 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   /** Used to free observables. */
   protected subscriptionHandler$ = new Subject();
-
-  // Injection sans utilise de property
-  // private api: TodoApiService;
-  // constructor(api: TodoApiService) {
-  //   this.api = api;
-  // }
 
   constructor(private readonly api: TodoApiService) {}
 

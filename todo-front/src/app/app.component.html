@@ -1,4 +1,24 @@
-<article>
-  <app-demo></app-demo>
-  <app-todo-list></app-todo-list>
-</article>
+<header>
+  <nav>
+    <ul>
+      <!-- <li><a [routerLink]="[game.id, 'show']">todos</a></li> -->
+      <li><a routerLink="todos" mat-button-raised>todos</a></li>
+      <li><a routerLink="lorem" mat-button-raised>Lorem Ipsum</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+
+<footer>
+  Plan du site :
+  <ul class="nav">
+    <!-- <li><a [routerLink]="[game.id, 'show']">todos</a></li> -->
+    <li><a routerLink="todos" mat-button-raised>todos</a></li>
+    <li><a routerLink="lorem" mat-button-raised>Lorem Ipsum</a></li>
+  </ul>
+</footer>

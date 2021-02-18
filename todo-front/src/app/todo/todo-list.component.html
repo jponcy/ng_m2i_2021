@@ -1,0 +1,22 @@
+<p>todo-list works!</p>
+
+<ng-template #loading>
+  <p class="text text-primary">
+    Chargement...
+  </p>
+</ng-template>
+
+<ng-container *ngIf="todos; else loading">
+  <div class="form-group">
+    <input type="checkbox" (click)="printingFinished = !printingFinished" id="finished">
+    <label for="finished">
+      Ne pas afficher les tâches finies
+    </label>
+  </div>
+
+  <ol>
+    <ng-container *ngFor="let t of todos">
+      <app-todo-list-item *ngIf="printingFinished || !t.finished" [todo]="t" (childClick)="onChildClick($event, t)" ></app-todo-list-item>
+    </ng-container>
+  </ol>
+</ng-container>

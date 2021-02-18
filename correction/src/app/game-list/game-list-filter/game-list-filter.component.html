@@ -11,11 +11,11 @@
     <input matInput>
   </mat-form-field> -->
 
-  <div class="form-group col-md">
+  <div class="form-group col-md" *ngIf="gameCategories$ | async as gameCategories">
     <label for="type">Type de jeu</label>
     <select name="type" id="type" class="form-control"  (change)="onChange('type', $event.target.value)">
       <option value="">Aucun</option>
-      <option *ngFor="let type of types">{{ type }}</option>
+      <option *ngFor="let cat of gameCategories" [value]="cat.id">{{ cat.name }}</option>
     </select>
   </div>
 

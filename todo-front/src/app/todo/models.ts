@@ -1,19 +1,17 @@
-interface TodoBase<T> {
+interface TodoBase {
+  id: number;
   label: string; // string/number/boolean/(any...).
-  finished: boolean;
-  tags: T[];
 }
 
-// export interface Todo extends TodoBase {
-//   tags: Tag[];
-// }
+export interface Todo extends TodoBase {
+  finished: boolean;
+  tags: Tag[];
+}
 
-// export interface TodoDto extends TodoBase {
-//   tags: number[];
-// }
-
-export type Todo = TodoBase<Tag>;
-export type TodoDto = TodoBase<number>;
+export interface TodoDto extends TodoBase {
+  finished_at: Date;
+  tags: number[];
+}
 
 // let tab1: number[];
 // let tab2: (number|string)[]; // Non !!
