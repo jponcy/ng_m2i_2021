@@ -5,6 +5,18 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+@mixin medium() {
+  @media screen and (min-width: 600px) and (max-width: 1599px) {
+    @content;
+  }
+}
+
+@mixin large() {
+  @media screen and (min-width: 1600px) {
+    @content;
+  }
+}
+
 button {
   @extend .btn, .btn-secondary;
 
@@ -41,12 +53,12 @@ button {
 
   // @extend .col-sm-6, .col-md-4, .col-lg-3;
 
-  @media screen and (min-width: 600px) and (max-width: 1599px) {
+  @include medium() {
     width: 45%;
     flex-grow: 1;
   }
 
-  @media screen and (min-width: 1600px) { width: 300px; }
+  @include large() { width: 300px; }
 
   // .card header, .card footer, .card main { padding: 15px; }
   // Pas la meilleur solution CSS, mais permet de montrer un certain nombre d'elements SASS.

@@ -26,6 +26,19 @@ export class GameApiService {
         .pipe(map(games => games.map(this.convert)));
   }
 
+  getOne(id: number): Observable<Game> {
+    const request = this.http.get<GameDto>(`${URL}/${id}`)
+        .pipe(map(this.convert));
+
+    return zip(request, this.categoryApi.getAll())
+        .pipe(
+          // map(([g, c]) => [[g], c]),
+          // map(this.mergeList),
+          // map(games => games[0])
+          map(([game, categories]) => this.mergeData(game, categories))
+        );
+  }
+
   private readonly mergeList: MergeList = ([games, categories]) => games
       .map(g => this.mergeData(g, categories))
       .map(g => g as Game)
@@ -35,7 +48,7 @@ export class GameApiService {
 
     return {
       ...result,
-      categories: genres.map(genre => categories.find(c => genre === c.id))
+      categories: genres.map(genre => categories.find(c => genre === c.id)) // TODO: Optimize (index categories).
     };
   }
 

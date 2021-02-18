@@ -1,0 +1,25 @@
+<app-spinner *ngIf="loading; else loaded"></app-spinner>
+
+<ng-template #loaded>
+  <article class="card" style="width: 100%;">
+    <header>
+      <div>
+        <h1>{{ game.name }}</h1>
+        <div class="spacer"></div>
+        <span *ngIf="game.note">{{ game.note }}/10</span>
+      </div>
+      <div>
+        <small *ngFor="let cat of game.categories || []; last as last">
+          {{ cat.name }}
+
+          <ng-container *ngIf="!last">, </ng-container>
+        </small>
+      </div>
+    </header>
+    <img [src]="game.coverImage" [alt]="'Cover image of ' + game.name">
+    <main>
+      <p [innerHTML]="game.description">
+      </p>
+    </main>
+  </article>
+</ng-template>

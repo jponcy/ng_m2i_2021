@@ -9,6 +9,8 @@ export interface GameFilter {
 }
 
 interface GameBase {
+  id: number;
+
   /** Note sur 10. */
   note: number;
 

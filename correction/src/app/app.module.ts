@@ -6,23 +6,29 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GameListActionsComponent } from './game-list/game-list-actions.component';
 import { GameListFilterComponent } from './game-list/game-list-filter/game-list-filter.component';
 import { GameListComponent } from './game-list/game-list.component';
+import { SharedModule } from './shared/shared.module';
+import { LayoutModule } from './layout/layout.module';
+import { GameDetailsComponent } from './game-details/game-details.component';
+import { GameFormComponent } from './game-form/game-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameListComponent,
     GameListFilterComponent,
-    GameListActionsComponent
+    GameDetailsComponent,
+    GameFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

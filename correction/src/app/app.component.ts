@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<app-game-list></app-game-list>`,
+  template: `
+    <app-skeleton>
+      <router-outlet></router-outlet>
+    </app-skeleton>`,
   styles: []
 })
 export class AppComponent {

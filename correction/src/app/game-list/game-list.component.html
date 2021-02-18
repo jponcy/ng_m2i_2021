@@ -2,6 +2,10 @@
 
 <hr>
 
+<div class="actions">
+  <button routerLink="new" class="primary">Ajouter un jeu</button>
+</div>
+
 <section class="card-list">
   <header>
     <h1>Our games</h1>
@@ -32,9 +36,8 @@
         </p>
       </main>
       <footer class="actions">
-        <app-game-list-actions
-          (action)="onAction($event, g)"
-        ></app-game-list-actions>
+        <button [routerLink]="[g.id]" [state]="g" class="primary">Voir</button>
+        <button [routerLink]="[g.id, 'edit']" class="danger">Editer</button>
       </footer>
     </article>
   </main>
