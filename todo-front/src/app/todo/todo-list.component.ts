@@ -35,4 +35,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
   onChildClick(newState: boolean, todo: Todo): void {
     console.log('On a cliqué sur ', { todo, newState });
   }
+
+  onUpdate(todo: Todo, index: number): void {
+    this.todos[index] = todo;
+  }
 }

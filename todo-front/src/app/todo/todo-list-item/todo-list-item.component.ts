@@ -15,9 +15,13 @@ export class TodoListItemComponent {
   @Output()
   private childClick = new EventEmitter<boolean>();
 
+  editing = false;
+
   onFinished(event: MouseEvent, todo: Todo): void {
-    todo.finished = !todo.finished;
-    this.childClick.emit(todo.finished);
-    event.stopPropagation();
+    if (this.todo) {
+      todo.finished = !todo.finished;
+      this.childClick.emit(todo.finished);
+      event.stopPropagation();
+    }
   }
 }

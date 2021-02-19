@@ -61,6 +61,9 @@ export class GameFormComponent implements OnInit {
 
     this.form.controls.company.disable();
     const val = this.form.value; // company ne sera pas present.
+    // this.form.patchValue()
+    // this.form.updateValueAndValidity();
+
     // this.form.controls.name.value;
     // this.form.get('name').value;
     // this.form.controls.name.valid;

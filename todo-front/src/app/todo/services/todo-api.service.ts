@@ -22,9 +22,21 @@ export class TodoApiService {
           map(([todos, tags]) => todos.map(({finished_at: finishedAt, ...todo}) => ({
             ...todo,
             finished: !!finishedAt, // finishedAt !== null,
-            tags: tags.filter(t => todo.tags.includes(t.id))
+            tags: tags.filter(t => (todo.tags || []).includes(t.id))
           })))
         );
+  }
+
+  save(todo: Todo): Observable<Todo> {
+    let request: Observable<TodoDto>;
+
+    if (todo.id) {
+      request = this.http.put<TodoDto>(`${URL}/${todo.id}`, todo);
+    } else {
+      request = this.http.post<TodoDto>(URL, todo);
+    }
+
+    return request.pipe(map(t => t as unknown as Todo)); // TODO: Convert
   }
 }
 

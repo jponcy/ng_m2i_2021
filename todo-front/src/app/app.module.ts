@@ -37,7 +37,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(routes, {
-      enableTracing: !environment.production,
+      // enableTracing: !environment.production,
       onSameUrlNavigation: 'reload', // Peut etre utile pour recharger facillement des composants.
       relativeLinkResolution: 'corrected',
       scrollOffset: [0, 0]

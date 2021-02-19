@@ -15,8 +15,8 @@
   </div>
 
   <ol>
-    <ng-container *ngFor="let t of todos">
-      <app-todo-list-item *ngIf="printingFinished || !t.finished" [todo]="t" (childClick)="onChildClick($event, t)" ></app-todo-list-item>
+    <ng-container *ngFor="let t of todos; index as index">
+      <app-todo-list-item *ngIf="printingFinished || !t.finished" [todo]="t" (childClick)="onChildClick($event, t)" (update)="onUpdate($event, index)"></app-todo-list-item>
     </ng-container>
   </ol>
 </ng-container>
